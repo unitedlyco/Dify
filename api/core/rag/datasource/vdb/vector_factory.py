@@ -84,6 +84,9 @@ class Vector:
             case VectorType.OPENSEARCH:
                 from core.rag.datasource.vdb.opensearch.opensearch_vector import OpenSearchVectorFactory
                 return OpenSearchVectorFactory
+            case VectorType.COUCHBASE:
+                from core.rag.datasource.vdb.couchbase.couchbase_vector import CouchbaseVectorFactory
+                return CouchbaseVectorFactory
             case _:
                 raise ValueError(f"Vector store {vector_type} is not supported.")
 
