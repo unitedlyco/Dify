@@ -57,6 +57,9 @@ class Vector:
             case VectorType.MILVUS:
                 from core.rag.datasource.vdb.milvus.milvus_vector import MilvusVectorFactory
                 return MilvusVectorFactory
+            case VectorType.MYSCALE:
+                from core.rag.datasource.vdb.myscale.myscale_vector import MyScaleVectorFactory
+                return MyScaleVectorFactory
             case VectorType.PGVECTOR:
                 from core.rag.datasource.vdb.pgvector.pgvector import PGVectorFactory
                 return PGVectorFactory
@@ -87,6 +90,9 @@ class Vector:
             case VectorType.COUCHBASE:
                 from core.rag.datasource.vdb.couchbase.couchbase_vector import CouchbaseVectorFactory
                 return CouchbaseVectorFactory
+            case VectorType.ANALYTICDB:
+                from core.rag.datasource.vdb.analyticdb.analyticdb_vector import AnalyticdbVectorFactory
+                return AnalyticdbVectorFactory
             case _:
                 raise ValueError(f"Vector store {vector_type} is not supported.")
 
