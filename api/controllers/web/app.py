@@ -80,11 +80,11 @@ class AppParameterApi(WebApiResource):
         }
 
 
-class AppMeta(WebApiResource):
+class AppToolsMeta(WebApiResource):
     def get(self, app_model: App, end_user):
-        """Get app meta"""
-        return AppService().get_app_meta(app_model)
+        """Get app tools meta"""
+        return AppService().get_app_tools_meta(app_model)
 
 
 api.add_resource(AppParameterApi, '/parameters')
-api.add_resource(AppMeta, '/meta')
+api.add_resource(AppToolsMeta, '/tools-meta')

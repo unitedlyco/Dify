@@ -83,11 +83,11 @@ class AppParameterApi(Resource):
         }
 
 
-class AppMetaApi(Resource):
+class AppToolsMetaApi(Resource):
     @validate_app_token
     def get(self, app_model: App):
-        """Get app meta"""
-        return AppService().get_app_meta(app_model)
+        """Get app tools meta"""
+        return AppService().get_app_tools_meta(app_model)
 
 class AppInfoApi(Resource):
     @validate_app_token
@@ -100,5 +100,5 @@ class AppInfoApi(Resource):
 
 
 api.add_resource(AppParameterApi, '/parameters')
-api.add_resource(AppMetaApi, '/meta')
+api.add_resource(AppToolsMetaApi, '/tools-meta')
 api.add_resource(AppInfoApi, '/info')
