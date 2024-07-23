@@ -71,4 +71,4 @@ def test_load_invalid_yaml_file(prepare_invalid_yaml_file):
         load_yaml_file(file_path=prepare_invalid_yaml_file, ignore_error=False)
 
     # ignore error
-    assert load_yaml_file(file_path=prepare_invalid_yaml_file, ignore_error=True) == {}
+    assert load_yaml_file(file_path=prepare_invalid_yaml_file) == {}
