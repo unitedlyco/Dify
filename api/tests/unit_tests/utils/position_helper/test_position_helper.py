@@ -28,7 +28,8 @@ def prepare_empty_commented_positions_yaml(tmp_path, monkeypatch) -> str:
         """\
         # - commented1
         # - commented2
-        
+        - 
+        -   
         
         """))
     return str(tmp_path)
