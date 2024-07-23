@@ -356,6 +356,9 @@ export const getVarType = ({
   isConstant?: boolean
   environmentVariables?: EnvironmentVariable[]
 }): VarType => {
+  if (valueSelector === undefined)
+    valueSelector = []
+
   if (isConstant)
     return VarType.string
 
@@ -536,7 +539,7 @@ export const getNodeUsedVars = (node: Node): ValueSelector[] => {
       break
     }
     case BlockEnum.KnowledgeRetrieval: {
-      res = [(data as KnowledgeRetrievalNodeType).query_variable_selector]
+      res = [(data as KnowledgeRetrievalNodeType).query_variable_selector, (data as KnowledgeRetrievalNodeType).authorized_dataset_ids_variable_selector]
       break
     }
     case BlockEnum.IfElse: {
@@ -737,6 +740,8 @@ export const updateNodeVars = (oldNode: Node, oldVarSelector: ValueSelector, new
         const payload = data as KnowledgeRetrievalNodeType
         if (payload.query_variable_selector.join('.') === oldVarSelector.join('.'))
           payload.query_variable_selector = newVarSelector
+        if (payload.authorized_dataset_ids_variable_selector.join('.') === oldVarSelector.join('.'))
+          payload.authorized_dataset_ids_variable_selector = newVarSelector
         break
       }
       case BlockEnum.IfElse: {
