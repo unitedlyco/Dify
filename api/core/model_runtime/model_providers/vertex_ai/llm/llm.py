@@ -334,12 +334,8 @@ class VertexAiLargeLanguageModel(LargeLanguageModel):
                             # fetch image data from url
                             try:
                                 image_content = requests.get(message_content.data).content
-                                mime_type, _ = mimetypes.guess_type(message_content.data)
-                                # Some image URLs may not have a file extension or the correct MIME type,
-                                # so we need to check the actual image content if guess_type fails
-                                if mime_type is None:
-                                    with Image.open(io.BytesIO(image_content)) as img:
-                                        mime_type = f"image/{img.format.lower()}"
+                                with Image.open(io.BytesIO(image_content)) as img:
+                                    mime_type = f"image/{img.format.lower()}"
                                 base64_data = base64.b64encode(image_content).decode('utf-8')
                             except Exception as ex:
                                 raise ValueError(f"Failed to fetch image data from url {message_content.data}, {ex}")
