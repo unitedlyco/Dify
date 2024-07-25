@@ -1,7 +1,6 @@
 import base64
 import io
 import json
-import mimetypes
 from collections.abc import Generator
 from typing import Optional, Union, cast
 

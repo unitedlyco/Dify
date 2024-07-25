@@ -3,7 +3,6 @@ import base64
 import io
 import json
 import logging
-import mimetypes
 from collections.abc import Generator
 from typing import Optional, Union, cast
 
